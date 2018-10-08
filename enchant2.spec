@@ -13,10 +13,10 @@ License:       LGPLv2+
 URL:           https://github.com/AbiWord/enchant
 Source0:       https://github.com/AbiWord/enchant/releases/download/v%{version}/enchant-%{version}.tar.gz
 
-BuildRequires: glib2-devel
+BuildRequires: pkgconfig(glib-2.0)
 BuildRequires: aspell-devel
 BuildRequires: hunspell-devel
-BuildRequires: libvoikko-devel
+BuildRequires: pkgconfig(libvoikko)
 Provides:      bundled(gnulib)
 Conflicts:     %{_lib}enchant2 < 2.2.3-2
 
