@@ -4,7 +4,7 @@
 %define devname %mklibname -d enchant %api
 
 Name:          enchant2
-Version:	2.2.7
+Version:	2.2.8
 Release:	1
 Summary:       An Enchanting Spell Checking Library
 Group:         System/Libraries
@@ -57,7 +57,7 @@ developing applications that use %{name}.
 %autosetup -p1 -n enchant-%{version}
 
 %build
-%configure2_5x \
+%configure \
     --with-aspell \
     --with-hunspell-dir=%{_datadir}/myspell \
     --disable-static
