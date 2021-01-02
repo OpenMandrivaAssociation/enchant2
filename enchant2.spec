@@ -5,7 +5,7 @@
 
 Name:          enchant2
 Version:	2.2.15
-Release:	1
+Release:	2
 Summary:       An Enchanting Spell Checking Library
 Group:         System/Libraries
 
@@ -16,6 +16,7 @@ Source0:       https://github.com/AbiWord/enchant/releases/download/v%{version}/
 BuildRequires: pkgconfig(glib-2.0)
 BuildRequires: aspell-devel
 BuildRequires: hunspell-devel
+BuildRequires:	hspell-devel
 BuildRequires: pkgconfig(libvoikko)
 Provides:      bundled(gnulib)
 Conflicts:     %{_lib}enchant2 < 2.2.3-2
@@ -34,6 +35,12 @@ Summary:       Integration with voikko for libenchant
 
 %description voikko
 Libraries necessary to integrate applications using libenchant with voikko.
+
+%package hspell
+Summary:       Integration with hspell for libenchant
+
+%description hspell
+Libraries necessary to integrate applications using libenchant with hspell.
 
 %package -n %libname
 Summary: An Enchanting Spell Checking Library
@@ -59,7 +66,7 @@ developing applications that use %{name}.
 %build
 %configure \
     --with-aspell \
-    --with-hunspell-dir=%{_datadir}/myspell \
+    --with-hunspell-dir=%{_datadir}/dict/ooo \
     --disable-static
 %make_build pkgdatadir=%{_datadir}/enchant-2
 
@@ -86,6 +93,10 @@ find %{buildroot} -name '*.la' -delete
 
 %files voikko
 %{_libdir}/enchant-2/enchant_voikko.so
+
+%files hspell
+%{_libdir}/enchant-2/enchant_hspell.so
+
 
 %files -n %devname
 %{_libdir}/libenchant-2.so
