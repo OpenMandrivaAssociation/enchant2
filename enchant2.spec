@@ -4,7 +4,7 @@
 %define devname %mklibname -d enchant %api
 
 Name:          enchant2
-Version:       2.3.2
+Version:       2.3.3
 Release:       1
 Summary:       An Enchanting Spell Checking Library
 Group:         System/Libraries
@@ -16,7 +16,7 @@ Source0:       https://github.com/AbiWord/enchant/releases/download/v%{version}/
 BuildRequires: pkgconfig(glib-2.0)
 BuildRequires: aspell-devel
 BuildRequires: hunspell-devel
-BuildRequires:	hspell-devel
+BuildRequires: hspell-devel
 BuildRequires: pkgconfig(libvoikko)
 Provides:      bundled(gnulib)
 Conflicts:     %{_lib}enchant2 < 2.2.3-2
