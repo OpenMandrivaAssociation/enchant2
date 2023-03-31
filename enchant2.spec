@@ -5,7 +5,7 @@
 
 Name:          enchant2
 Version:       2.3.4
-Release:       1
+Release:       2
 Summary:       An Enchanting Spell Checking Library
 Group:         System/Libraries
 
