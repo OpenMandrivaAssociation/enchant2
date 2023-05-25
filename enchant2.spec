@@ -85,6 +85,7 @@ find %{buildroot} -name '*.la' -delete
 %{_bindir}/enchant-2
 %{_bindir}/enchant-lsmod-2
 %{_mandir}/man1/*
+%{_mandir}/man5/enchant.5.*        
 %{_datadir}/enchant-2/
 
 %files -n %libname
@@ -101,7 +102,6 @@ find %{buildroot} -name '*.la' -delete
 
 %files hspell
 %{_libdir}/enchant-2/enchant_hspell.so
-
 
 %files -n %devname
 %{_libdir}/libenchant-2.so
