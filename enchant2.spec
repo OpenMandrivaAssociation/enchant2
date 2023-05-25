@@ -13,6 +13,7 @@ License:       LGPLv2+
 URL:           https://github.com/AbiWord/enchant
 Source0:       https://github.com/AbiWord/enchant/releases/download/v%{version}/enchant-%{version}.tar.gz
 
+BuildRequires: groff
 BuildRequires: pkgconfig(glib-2.0)
 BuildRequires: aspell-devel
 BuildRequires: hunspell-devel
