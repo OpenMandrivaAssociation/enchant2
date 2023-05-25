@@ -65,6 +65,7 @@ developing applications that use %{name}.
 %autosetup -p1 -n enchant-%{version}
 
 %build
+# Failed to build with Clang 16 https://github.com/AbiWord/enchant/issues/327    
 export CC=gcc
 export CXX=g++    
 %configure \
@@ -79,6 +80,7 @@ find %{buildroot} -name '*.la' -delete
 
 %files
 %doc AUTHORS NEWS README
+%doc %{_datadir}/doc/enchant/    
 %license COPYING.LIB
 %{_bindir}/enchant-2
 %{_bindir}/enchant-lsmod-2
