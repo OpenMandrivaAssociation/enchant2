@@ -13,6 +13,7 @@ License:       LGPLv2+
 URL:           https://github.com/AbiWord/enchant
 Source0:       https://github.com/AbiWord/enchant/releases/download/v%{version}/enchant-%{version}.tar.gz
 
+BuildRequires: groff
 BuildRequires: pkgconfig(glib-2.0)
 BuildRequires: aspell-devel
 BuildRequires: hunspell-devel
@@ -64,6 +65,9 @@ developing applications that use %{name}.
 %autosetup -p1 -n enchant-%{version}
 
 %build
+# Failed to build with Clang 16 https://github.com/AbiWord/enchant/issues/327    
+export CC=gcc
+export CXX=g++    
 %configure \
     --with-aspell \
     --with-hunspell-dir=%{_datadir}/dict/ooo \
@@ -76,6 +80,7 @@ find %{buildroot} -name '*.la' -delete
 
 %files
 %doc AUTHORS NEWS README
+%doc %{_datadir}/doc/enchant/    
 %license COPYING.LIB
 %{_bindir}/enchant-2
 %{_bindir}/enchant-lsmod-2
