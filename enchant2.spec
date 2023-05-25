@@ -64,6 +64,8 @@ developing applications that use %{name}.
 %autosetup -p1 -n enchant-%{version}
 
 %build
+export CC=gcc
+export CXX=g++    
 %configure \
     --with-aspell \
     --with-hunspell-dir=%{_datadir}/dict/ooo \
