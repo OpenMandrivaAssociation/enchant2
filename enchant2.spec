@@ -1,3 +1,4 @@
+%define _disable_rebuild_configure 1
 %global api 2
 %global major 2
 %define libname %mklibname enchant %api %major
@@ -5,13 +6,14 @@
 
 Name:          enchant2
 Version:       2.5.0
-Release:       1
+Release:       2
 Summary:       An Enchanting Spell Checking Library
 Group:         System/Libraries
 
 License:       LGPLv2+
 URL:           https://github.com/AbiWord/enchant
 Source0:       https://github.com/AbiWord/enchant/releases/download/v%{version}/enchant-%{version}.tar.gz
+Patch0:        enchant-2.5.0-clang16.patch
 
 BuildRequires: groff
 BuildRequires: pkgconfig(glib-2.0)
@@ -65,9 +67,6 @@ developing applications that use %{name}.
 %autosetup -p1 -n enchant-%{version}
 
 %build
-# Failed to build with Clang 16 https://github.com/AbiWord/enchant/issues/327    
-export CC=gcc
-export CXX=g++    
 %configure \
     --with-aspell \
     --with-hunspell-dir=%{_datadir}/dict/ooo \
