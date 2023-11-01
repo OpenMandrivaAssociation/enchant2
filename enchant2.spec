@@ -13,7 +13,7 @@ Group:         System/Libraries
 License:       LGPLv2+
 URL:           https://github.com/AbiWord/enchant
 Source0:       https://github.com/AbiWord/enchant/releases/download/v%{version}/enchant-%{version}.tar.gz
-#Patch0:        enchant-2.5.0-clang16.patch
+Patch0:        enchant-2.5.0-clang16.patch
 
 BuildRequires: groff
 BuildRequires: pkgconfig(glib-2.0)
