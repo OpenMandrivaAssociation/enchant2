@@ -85,7 +85,7 @@ find %{buildroot} -name '*.la' -delete
 %{_bindir}/enchant-lsmod-2
 %{_mandir}/man1/*
 %{_mandir}/man5/enchant.5.*        
-%{_datadir}/enchant-2/
+#{_datadir}/enchant-2/
 
 %files -n %libname
 %license COPYING.LIB
