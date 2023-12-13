@@ -5,7 +5,7 @@
 %define devname %mklibname -d enchant %api
 
 Name:          enchant2
-Version:       2.6.3
+Version:       2.6.4
 Release:       1
 Summary:       An Enchanting Spell Checking Library
 Group:         System/Libraries
@@ -85,7 +85,7 @@ find %{buildroot} -name '*.la' -delete
 %{_bindir}/enchant-lsmod-2
 %{_mandir}/man1/*
 %{_mandir}/man5/enchant.5.*        
-%{_datadir}/enchant-2/
+%{_datadir}/enchant-2-2/enchant.ordering
 
 %files -n %libname
 %license COPYING.LIB
