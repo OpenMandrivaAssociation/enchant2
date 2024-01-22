@@ -21,6 +21,10 @@ BuildRequires: aspell-devel
 BuildRequires: hunspell-devel
 BuildRequires: hspell-devel
 BuildRequires: pkgconfig(libvoikko)
+BuildRequires: autoconf
+BuildRequires: automake
+BuildRequires: slibtool
+BuildRequires: make
 Provides:      bundled(gnulib)
 Conflicts:     %{_lib}enchant2 < 2.2.3-2
 
@@ -71,10 +75,10 @@ developing applications that use %{name}.
     --with-aspell \
     --with-hunspell-dir=%{_datadir}/dict/ooo \
     --disable-static
-%make_build pkgdatadir=%{_datadir}/enchant-2
+%make_build pkgdatadir=%{_datadir}/enchant-2 LIBTOOL=slibtool-shared
 
 %install
-%make_install pkgdatadir=%{_datadir}/enchant-2
+%make_install pkgdatadir=%{_datadir}/enchant-2 LIBTOOL=slibtool-shared
 find %{buildroot} -name '*.la' -delete
 
 %files
