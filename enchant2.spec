@@ -5,7 +5,7 @@
 %define devname %mklibname -d enchant %api
 
 Name:          enchant2
-Version:       2.6.9
+Version:       2.8.0
 Release:       1
 Summary:       An Enchanting Spell Checking Library
 Group:         System/Libraries
@@ -13,7 +13,7 @@ Group:         System/Libraries
 License:       LGPLv2+
 URL:           https://github.com/AbiWord/enchant
 Source0:       https://github.com/AbiWord/enchant/releases/download/v%{version}/enchant-%{version}.tar.gz
-Patch0:        enchant-2.5.0-clang16.patch
+#Patch0:        enchant-2.5.0-clang16.patch
 
 BuildRequires: groff
 BuildRequires: pkgconfig(glib-2.0)
@@ -82,7 +82,7 @@ developing applications that use %{name}.
 find %{buildroot} -name '*.la' -delete
 
 %files
-%doc AUTHORS NEWS README
+%doc AUTHORS NEWS
 %doc %{_datadir}/doc/enchant/    
 %license COPYING.LIB
 %{_bindir}/enchant-2
