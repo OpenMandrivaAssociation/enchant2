@@ -82,7 +82,7 @@ developing applications that use %{name}.
 find %{buildroot} -name '*.la' -delete
 
 %files
-%doc AUTHORS NEWS README
+%doc AUTHORS NEWS
 %doc %{_datadir}/doc/enchant/    
 %license COPYING.LIB
 %{_bindir}/enchant-2
