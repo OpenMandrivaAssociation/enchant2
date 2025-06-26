@@ -5,7 +5,7 @@
 %define devname %mklibname -d enchant %api
 
 Name:          enchant2
-Version:       2.8.6
+Version:       2.8.10
 Release:       1
 Summary:       An Enchanting Spell Checking Library
 Group:         System/Libraries
