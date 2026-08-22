@@ -15,13 +15,26 @@ URL:           https://github.com/AbiWord/enchant
 Source0:       https://github.com/AbiWord/enchant/releases/download/v%{version}/enchant-%{version}.tar.gz
 #Patch0:        enchant-2.5.0-clang16.patch
 
+# Default on so native builds stay unchanged. Cross bootstrap uses
+# --without aspell/hspell/voikko (NEEDED: enchant2:-aspell:-hspell:-voikko)
+# to avoid the glibmm / libxml++ / malaga / python2 stack those backends pull.
+%bcond_without aspell
+%bcond_without hspell
+%bcond_without voikko
+
 BuildRequires:	libtool-base
 BuildRequires: groff
 BuildRequires: pkgconfig(glib-2.0)
-BuildRequires: aspell-devel
 BuildRequires: hunspell-devel
+%if %{with aspell}
+BuildRequires: aspell-devel
+%endif
+%if %{with hspell}
 BuildRequires: hspell-devel
+%endif
+%if %{with voikko}
 BuildRequires: pkgconfig(libvoikko)
+%endif
 BuildRequires: autoconf
 BuildRequires: automake
 BuildRequires: slibtool
@@ -32,23 +45,29 @@ Conflicts:     %{_lib}enchant2 < 2.2.3-2
 %description
 A library that wraps other spell checking backends.
 
+%if %{with aspell}
 %package aspell
 Summary:       Integration with aspell for libenchant
 
 %description aspell
 Libraries necessary to integrate applications using libenchant with aspell.
+%endif
 
+%if %{with voikko}
 %package voikko
 Summary:       Integration with voikko for libenchant
 
 %description voikko
 Libraries necessary to integrate applications using libenchant with voikko.
+%endif
 
+%if %{with hspell}
 %package hspell
 Summary:       Integration with hspell for libenchant
 
 %description hspell
 Libraries necessary to integrate applications using libenchant with hspell.
+%endif
 
 %package -n %libname
 Summary: An Enchanting Spell Checking Library
@@ -73,7 +92,21 @@ developing applications that use %{name}.
 
 %build
 %configure \
+%if %{with aspell}
     --with-aspell \
+%else
+    --without-aspell \
+%endif
+%if %{with voikko}
+    --with-voikko \
+%else
+    --without-voikko \
+%endif
+%if %{with hspell}
+    --with-hspell \
+%else
+    --without-hspell \
+%endif
     --with-hunspell-dir=%{_datadir}/dict/ooo \
     --disable-static
 %make_build pkgdatadir=%{_datadir}/enchant-2 LIBTOOL=slibtool-shared
@@ -98,14 +131,20 @@ find %{buildroot} -name '*.la' -delete
 %dir %{_libdir}/enchant-2/
 %{_libdir}/enchant-2/enchant_hunspell.so
 
+%if %{with aspell}
 %files aspell
 %{_libdir}/enchant-2/enchant_aspell.so
+%endif
 
+%if %{with voikko}
 %files voikko
 %{_libdir}/enchant-2/enchant_voikko.so
+%endif
 
+%if %{with hspell}
 %files hspell
 %{_libdir}/enchant-2/enchant_hspell.so
+%endif
 
 %files -n %devname
 %{_libdir}/libenchant-2.so
